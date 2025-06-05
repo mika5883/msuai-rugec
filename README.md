@@ -9,6 +9,18 @@ One can read about in [data](data) folder. It has links to get training data.
 * Everything was run in Yandex Data Sphere but can also work in colab. The dependencies aren't listed as many modules for data science and machine learning are usually installed on such platforms. 
 * There are in total 5 different notebooks. Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
 
+## ESC pipeline.
+
+* Here is the original [repo](https://github.com/nusnlp/esc) with a guide on installation. I recommend using ERRANT venv to train the pipeline. 
+
+* Make sure this line in `file_utils.py` looks like this (-lang ru). By default, it's 'Russian' in ERRANT. I changed it there to 'ru' but you should probably use 'Russian' instead. `lang='Russian'`. s
+    ```
+    def parse_m2(src, cor, m2_path):
+        command = "errant_parallel -orig {orig} -cor {cor} -out {out} -lang {lang}".format(orig=src, cor=cor, out=m2_path, lang='ru')
+        subprocess.run(command, shell=True, check=True)
+    ```
+
+
 # Inference
 
 Folder [inference](inference) contains two `.ipynb` files with code to extract prediction from T5 and Qwen models. 
