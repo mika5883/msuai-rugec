@@ -78,7 +78,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-inp', type=str, required=True)
     parser.add_argument('-sep',  default='\t\t')
-    parser.add_argument('-n_samps', type=int, default=1000)
+    parser.add_argument('-n', type=int, default=1000)
     parser.add_argument('-out', type=str, required=True)
     parser.add_argument('--clean', action=argparse.BooleanOptionalAction)
     parser.add_argument('--dirty', action=argparse.BooleanOptionalAction)
@@ -87,7 +87,7 @@ def parse_args():
 
 def main(args):
     df = pd.read_csv(args.inp, sep=args.sep)#, names=['correct_sent', 'corrupt_sent']), #quoting=csv.QUOTE_NONE)
-    df = df.sample(args.n_samps, random_state=43, replace=False)
+    df = df.sample(args.n, random_state=43, replace=False)
     tqdm.pandas(desc = "my bar!")
     if args.clean:
         df.corrupt_sent = df.correct_sent

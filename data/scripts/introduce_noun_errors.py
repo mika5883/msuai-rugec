@@ -5,11 +5,11 @@ from tqdm import tqdm
 import pandas as pd
 from random import randint
 
-morph = pymorphy3.MorphAnalyzer()
-nlp = spacy.load('ru_core_news_lg')
+if __name__ == '__main__':
+  morph = pymorphy3.MorphAnalyzer()
+  nlp = spacy.load('ru_core_news_lg')
 
-
-def extract_noun_phrases(text):
+def extract_noun_phrases(text, nlp=nlp):
     doc = nlp(text)
     noun_phrases = []
 
@@ -47,7 +47,7 @@ def extract_noun_phrases(text):
             noun_phrases.append([full_phrase, start_index, end_index])
     return noun_phrases, text
 
-def revise(noun_phrases, text):
+def revise(noun_phrases, text, nlp=nlp):
     doc = nlp(text)
     # проверка пересечений во фразах для объединения их в одну крупную
     revised_noun_phrases = []
@@ -85,7 +85,7 @@ def revise(noun_phrases, text):
           revised_noun_phrases.append((' '.join([w for _, w in each[0]]), each[1], each[2]))
     return revised_noun_phrases
 
-def change_case_or_number(noun_phrase, case=None, number=None):
+def change_case_or_number(noun_phrase, case=None, number=None, morph=morph):
     words = noun_phrase.split()
     
     modified_words = []
@@ -101,7 +101,7 @@ def change_case_or_number(noun_phrase, case=None, number=None):
 
     return ' '.join(modified_words)
 
-def reconstruct_sentence(sent, noun_phrases, case=None, number=None):
+def reconstruct_sentence(sent, noun_phrases, case=None, number=None, nlp=nlp):
     doc = nlp(sent)
     modified_sent = list(sent)
     offset = 0
@@ -124,15 +124,16 @@ def corrupt(sent:str):
 
 def parse_args():
   parser = argparse.ArgumentParser()
-  parser.add_argument('-inp', type=str, required=True)
-  parser.add_argument('-sep', default='\t\t')
-  parser.add_argument('-n', type=int, default=1000)
-  parser.add_argument('-out', type=str, required=True)
-  parser.add_argument('-rst', type=int, default=42)
+  parser.add_argument('-inp', help='',type=str, required=True)
+  parser.add_argument('-sep', help='sep symbol of pandas', default='\t\t')
+  parser.add_argument('-n', type=int,help='number of examples (no more than the dataset itself) to corrupt' , default=1000)
+  parser.add_argument('-out', type=str,help='output .tsv file', required=True)
+  parser.add_argument('-rst', type=int, help='random state', default=42)
   args = parser.parse_args()
   return args
 
 def main(args):
+  
   df = pd.read_csv(args.inp, sep=args.sep, names=['correct_sent', 'corrupt_sent'])
   df = df.sample(n=args.n, replace=False, random_state=args.rst)
   tqdm.pandas(desc = "corruption")

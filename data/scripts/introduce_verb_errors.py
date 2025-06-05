@@ -4,7 +4,7 @@ import argparse
 import pandas as pd
 from random import randint
 from tqdm import tqdm
-import csv
+# import csv
 
 nlp = spacy.load("ru_core_news_lg")
 morph = pymorphy3.MorphAnalyzer()
