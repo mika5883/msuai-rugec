@@ -1,12 +1,13 @@
-# Автоматическое исправление грамматических ошибок
-
-# IN PROGRESS (WILL BE DONE SOON)
+# Grammar Error Correction for Russian
 
 # Data
 
-One can read about in [data](data) folder.  
+One can read about in [data](data) folder. It has links to get training data. 
 
 # Training
+
+* Everything was run in Yandex Data Sphere but can also work in colab. The dependencies aren't listed as many modules for data science and machine learning are usually installed on such platforms. 
+* There are in total 5 different notebooks. Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
 
 # Inference
 
