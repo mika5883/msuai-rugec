@@ -2,7 +2,7 @@
 
 # Data
 
-One can read about in [data](data) folder. It has links to get training data. 
+One can read about it in [data](data) folder. It has links to get training data. 
 ## Scripts
 * install requirements from `requirements.txt`. I use python 3.10.13 for ERRANT and ESC Pipeline training. Set up a venv.  
     ```
