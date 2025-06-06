@@ -15,10 +15,20 @@ One can read about it in [data](data) folder. It has links to get training data.
 
 * to use spacy, one should also install `ru_core_news_lg`. run `py -m spacy download ru_core_news_lg` or go to the official spacy website and download the version you need.
 
-# Training
+# Training and Inference
+* you can install requirements from [requirements.txt](train_inference\requirements.txt)
 
-* Everything was run in Yandex Data Sphere but can also work in colab. The dependencies aren't listed as many modules for data science and machine learning are usually installed on such platforms. 
-* There are in total 5 different notebooks. Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
+    ```
+    python -m pip install -r train_inference\requirements.txt
+    ```
+## Training
+
+* There are in total 5 different notebooks for training in [here](train_inference\train). Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
+
+## Inference
+
+Folder [inference](train_inference\inference) contains two `.ipynb` files with code to extract prediction from T5 and Qwen models. 
+
 
 ## ESC pipeline.
 
@@ -32,9 +42,7 @@ One can read about it in [data](data) folder. It has links to get training data.
     ```
 
 
-# Inference
 
-Folder [inference](inference) contains two `.ipynb` files with code to extract prediction from T5 and Qwen models. 
 
 # Evaluation
 
@@ -48,3 +56,8 @@ Evaluation requires installation of ERRANT (`python3`) and/or M2Scorer (`python2
 ## M2SCORER. 
 
 * Requires python2. Look [here](https://github.com/nusnlp/m2scorer). It achieves slightly higher scores than ERRANT when assessing model performance. 
+
+* You can run it like this from your **python2** venv (or you might specify `python2`):
+    ```
+    python m2scorer/scripts/m2scorer.py test_output GOLD.m2
+    ```
