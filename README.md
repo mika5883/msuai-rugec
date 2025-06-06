@@ -23,11 +23,11 @@ One can read about it in [data](data) folder. It has links to get training data.
     ```
 ## Training
 
-* There are in total 5 different notebooks for training in [here](train_inference\train). Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
+* There are in total 5 different notebooks for training in [here](train_inference/train). Two for pretraining and finetuning T5 using SFT. One for our DPO pipeline with T5. Two for training Qwen. It's preferable to use Qwen3 because it uses unsloth and optimizes memory usage a lot. It is also simpler. 
 
 ## Inference
 
-Folder [inference](train_inference\inference) contains two `.ipynb` files with code to extract prediction from T5 and Qwen models. 
+Folder [inference](train_inference/inference) contains two `.ipynb` files with code to extract prediction from T5 and Qwen models. 
 
 
 ## ESC pipeline.
