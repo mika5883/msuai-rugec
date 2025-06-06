@@ -16,7 +16,7 @@ One can read about it in [data](data) folder. It has links to get training data.
 * to use spacy, one should also install `ru_core_news_lg`. run `py -m spacy download ru_core_news_lg` or go to the official spacy website and download the version you need.
 
 # Training and Inference
-* you can install requirements from [requirements.txt](train_inference\requirements.txt)
+* you can install requirements from [requirements.txt](train_inference/requirements.txt)
 
     ```
     python -m pip install -r train_inference\requirements.txt
