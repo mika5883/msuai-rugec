@@ -5,3 +5,5 @@ pymorphy3==2.0.3
 pandas==2.2.3
 nltk==3.9.1
 numpy==1.26.4
+torch==2.0
+scikit-learn==1.6.1

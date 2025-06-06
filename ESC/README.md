@@ -9,7 +9,21 @@
         subprocess.run(command, shell=True, check=True)
     ```
 
+* I use python 3.10.13 and ERRANT 2.3.0.
+
 # From official REPO
+
+## Installation
+This code should be run with Python 3.6. The reason Python 3.6 is needed is because the ERRANT version that is used in the BEA-2019 shared task (v2.0.0) is not compatible with Python >= 3.7
+
+Install this code dependencies by running (**I commented out what is not needed since we should already have the packages needed**):
+```.bash
+<!-- pip install -r requirements.txt
+python -m spacy download en -->
+wget https://www.comp.nus.edu.sg/~nlp/sw/m2scorer.tar.gz
+tar -xf m2scorer.tar.gz
+```
+Note that you may need to customize your pytorch installation depending on your CUDA version, read more [here](https://pytorch.org/get-started/previous-versions/). The code may also work with torch < 1.9.0 as only simple pytorch functions are used.
 
 ## Retraining the experiments in the paper
 For the CoNLL-2014 experiment, run: `export EXP_DIR=conll-exp` .
