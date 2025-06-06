@@ -1,7 +1,6 @@
 import argparse
 import errant
 import pandas as pd
-import csv
 from tqdm import tqdm
 
 def read_df(tsv_path, sep='\t'):

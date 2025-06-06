@@ -1,0 +1,7 @@
+-e git+https://github.com/Askinkaty/errant.git@master#egg=errant
+Levenshtein==0.27.1
+spacy==3.8.7
+pymorphy3==2.0.3
+pandas==2.2.3
+nltk==3.9.1
+numpy==1.26.4

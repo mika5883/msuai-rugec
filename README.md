@@ -3,6 +3,17 @@
 # Data
 
 One can read about in [data](data) folder. It has links to get training data. 
+## Scripts
+* install requirements from `requirements.txt`. I use python 3.10.13 for ERRANT and ESC Pipeline training. Set up a venv.  
+    ```
+    py -m pip install -r requirements.txt
+    ```
+* To use M2Scorer, install python2. I use 2.7.18. You can also set up a venv and run. 
+    ```
+    python -m pip install m2scorer
+    ```
+
+* to use spacy, one should also install `ru_core_news_lg`. run `py -m spacy download ru_core_news_lg` or go to the official spacy website and download the version you need.
 
 # Training
 

@@ -18,14 +18,6 @@ As for the original `RULEC-GEC.test.m2`, I found it needs back and forth convers
 
 # Scripts
 
-* install requirements from requirements.txt
-```
-cd data
-py -m pip install -r requirements.txt
-```
-
-* to use spacy, one should also install `ru_core_news_lg`. run `py -m spacy download ru_core_news_lg` or go to the official spacy website and download the version you need.
-
 * [corr_from_m2.py](data\scripts\corr_from_m2.py). Takes as `-inp` path to .m2 file with correction, `-out` path to output .txt file with corrections
 
 * All `introduce` scripts are a bit tricky since I haven't really worked on them well enough. First things first, look out for doubling quotes when using them consequently (or even just once). pandas adds quotes around quotes. even though they're in the file, pandas processes them correctly. But if you use scripts consequently, they double once again and pandas won't be able to help you get rid of them. I manually delete them after the job is done.
@@ -38,4 +30,12 @@ py -m pip install -r requirements.txt
     python introduce_noun_errors.py -inp data\25k_NVP.tsv -sep '\t' -out data\new_25k_NVP.tsv -n 25000
     python introduce_verb_errors.py -inp data\new_25k_NVP.tsv -out data\new_25k_NVP.tsv -sep '\t' -frac 1 --dirty
     python introduce_punct_errors.py -inp data\new_25k_NVP.tsv -out data\new_25k_NVP.tsv -sep '\t' -n 25000 --dirty
+    ```
+* [tsv_to_m2.py](data\scripts\tsv_to_m2.py). As the name suggests, it is used to get a correction .m2 file from a corrupt-corrected .tsv file. `-sep` is '\t' by default.
+    ```
+    python tsv_to_m2.py -inp TSV_FILE_PATH -out OUTPUT_M2_PATH
+    ```
+* [tsv2src_trg.py](data\scripts\tsv2src_trg.py). Divides corrupt-corrected .tsv into 2 separate .txt files for M2Scorer. `-sep` is '\t' by default. src are usually redundant since we already have them but it's fine.
+    ```
+    python tsv2src_trg.py -inp TSV_FILE_PATH -out OUTPUT_FOLDER
     ```

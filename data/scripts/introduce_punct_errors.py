@@ -3,7 +3,6 @@ import argparse
 from numpy.random import choice
 from random import randint
 from tqdm import tqdm
-import csv
 
 russian_punctuation = {',': 0.491436521671684,
     '.': 0.130824666898895, 
